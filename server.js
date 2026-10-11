@@ -23,6 +23,16 @@ app.get("/app.js", (req, res) => {
     res.sendFile(path.join(__dirname, "app.js"));
 });
 
+//===============テスト用============================================
+app.get("/notes_test.html", (req, res) => {
+    res.sendFile(path.join(__dirname, "notes_test.html"));
+});
+
+app.get("/notes_test.css", (req, res) => {
+    res.sendFile(path.join(__dirname, "notes_test.css"));
+});
+//===============テスト用============================================
+
 // Google Sheets settings.
 const auth = new google.auth.GoogleAuth({
     keyFile: path.join(__dirname, "service-account.json"),
