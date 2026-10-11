@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>今日のミッション</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+    <main class="home-screen">
+
+        <!-- Home screen -->
+        <section id="home-screen">
+
+            <header class="streak">
+                <div class="streak-info">
+                    <span class="orbit-icon" aria-hidden="true">◎</span>
+                    <span>連続 5日</span>
+                </div>
+                <span class="sparkle-icon" aria-hidden="true">✧</span>
+            </header>
+
+            <section class="mission">
+                <div class="mission-label">
+                    <span class="moon-icon" aria-hidden="true">☾</span>
+                    <span>今日のミッション</span>
+                </div>
+
+                <h1 class="mission-title" id="home-theme">
+                    宇宙アパートのおすそわけ
+                </h1>
+
+                <div class="title-decoration"></div>
+
+                <p class="mission-description" id="home-description">
+                    月面アパートに住むあなたは、隣人から手作りのジャムをもらいました。お礼に何かをお返ししたいと考えています。
+                </p>
+
+                <button class="start-button" id="start-button" type="button">
+                    <span class="rocket-icon" aria-hidden="true">♧</span>
+                    <span>旅をはじめる</span>
+                    <span class="arrow-icon" aria-hidden="true">↗</span>
+                </button>
+            </section>
+
+        </section>
+
+        <!-- Writing screen -->
+        <section id="writing-screen" hidden>
+
+            <header class="streak">
+                <button type="button" class="back-link" id="back-button">
+                    ← 戻る
+                </button>
+                <span class="page-label">MISSION</span>
+            </header>
+
+            <section class="mission">
+                <div class="mission-label">
+                    <span class="moon-icon" aria-hidden="true">☾</span>
+                    <span>今日のミッション</span>
+                </div>
+
+                <h1 class="mission-title" id="writing-theme">
+                    宇宙アパートのおすそわけ
+                </h1>
+
+                <div class="title-decoration"></div>
+
+                <p class="mission-description" id="writing-description">
+                    月面アパートに住むあなたは、隣人から手作りのジャムをもらいました。お礼に何かをお返ししたいと考えています。
+                </p>
+            </section>
+
+            <section class="mission-content">
+
+                <section class="mission-background">
+                    <h2 class="section-title">背景</h2>
+                    <p id="background"></p>
+                </section>
+
+                <section class="situation-list">
+                    <section class="situation-item">
+                        <h2 class="section-title">状況 1</h2>
+                        <p id="situation1"></p>
+                    </section>
+
+                    <section class="situation-item">
+                        <h2 class="section-title">状況 2</h2>
+                        <p id="situation2"></p>
+                    </section>
+
+                    <section class="situation-item">
+                        <h2 class="section-title">状況 3</h2>
+                        <p id="situation3"></p>
+                    </section>
+                </section>
+
+                <section class="mission-task">
+                    <h2 class="section-title">ミッション</h2>
+                    <p id="mission"></p>
+                </section>
+
+                <section class="writing-conditions">
+                    <h2 class="section-title">作文条件</h2>
+                    <ol>
+                        <li id="condition1"></li>
+                        <li id="condition2"></li>
+                        <li id="condition3"></li>
+                    </ol>
+                </section>
+
+
+                <section class="writing-section">
+                    <label for="writing-input" class="input-label">
+                        フランス語で作文する
+                    </label>
+
+                    <textarea id="writing-input" class="writing-input" placeholder="Écrivez votre texte en français..."
+                        rows="8" lang="fr"></textarea>
+                </section>
+
+                <button type="button" class="submit-button" id="submit-button">
+                    添削する
+                    <span aria-hidden="true">↗</span>
+                </button>
+
+                <section id="correction-result" hidden>
+                    <h3>添削結果</h3>
+                    <p id="correction-feedback"></p>
+                </section>
+
+
+            </section>
+
+        </section>
+
+    </main>
+</body>
+
+</html>

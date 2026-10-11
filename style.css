@@ -1,0 +1,446 @@
+/* ===== Base ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --page-bg: #0A1020;
+    --panel-bg: #151F33;
+    --panel-light: #1B2941;
+    --border: #293650;
+    --text-primary: #F4F1E9;
+    --text-secondary: #D4DCE9;
+    --accent-blue: #9BBBE5;
+    --accent-gold: #D9C38D;
+    --button-bg: #5879A8;
+    --button-hover: #6A89B5;
+}
+
+html {
+    min-height: 100%;
+    background: var(--page-bg);
+}
+
+body {
+    min-height: 100vh;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        "Hiragino Kaku Gothic ProN",
+        "Noto Sans JP",
+        sans-serif;
+    background: var(--page-bg);
+    color: var(--text-primary);
+    line-height: 1.7;
+}
+
+/* Keep hidden screens hidden */
+
+#home-screen[hidden],
+#writing-screen[hidden] {
+    display: none;
+}
+
+button,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* ===== Main container ===== */
+
+.home-screen {
+    width: 100%;
+    max-width: 1000px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 20px 16px 40px;
+    background: var(--panel-bg);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+}
+
+/* ===== Header ===== */
+
+.streak {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.streak-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.orbit-icon {
+    color: var(--accent-blue);
+    font-size: 20px;
+    line-height: 1;
+}
+
+.sparkle-icon {
+    color: var(--accent-gold);
+    font-size: 20px;
+    line-height: 1;
+}
+
+.back-link {
+    padding: 6px 0;
+    border: none;
+    background: transparent;
+    color: var(--accent-blue);
+    font-size: 14px;
+}
+
+.back-link:hover {
+    color: var(--text-primary);
+}
+
+.page-label {
+    color: var(--accent-gold);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+}
+
+/* ===== Mission heading ===== */
+
+.mission {
+    width: 100%;
+    margin: 36px auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mission-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--accent-blue);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.moon-icon {
+    font-size: 19px;
+    line-height: 1;
+}
+
+.mission-title {
+    width: 100%;
+    margin-top: 20px;
+    color: var(--text-primary);
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.title-decoration {
+    width: 36px;
+    height: 2px;
+    margin-top: 18px;
+    background: var(--accent-gold);
+    border-radius: 999px;
+}
+
+.mission-description {
+    width: 100%;
+    max-width: 640px;
+    margin-top: 20px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 2;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+/* ===== Start button ===== */
+
+.start-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: fit-content;
+    max-width: 100%;
+    min-height: 46px;
+    margin: 30px auto 0;
+    padding: 12px 20px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    background: var(--button-bg);
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s ease;
+}
+
+.start-button:hover {
+    background: var(--button-hover);
+}
+
+.start-button:focus-visible,
+.back-link:focus-visible,
+.submit-button:focus-visible {
+    outline: 2px solid var(--accent-blue);
+    outline-offset: 4px;
+}
+
+.rocket-icon,
+.arrow-icon {
+    font-size: 18px;
+    line-height: 1;
+}
+
+/* ===== Writing page content ===== */
+
+.mission-content {
+    width: 100%;
+    max-width: 760px;
+    margin: 36px auto 0;
+}
+
+.mission-background,
+.situation-item,
+.mission-task,
+.writing-conditions {
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--panel-light);
+}
+
+.mission-background,
+.mission-task,
+.writing-conditions {
+    margin-bottom: 16px;
+}
+
+.section-title {
+    margin-bottom: 8px;
+    color: var(--accent-blue);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.mission-background p,
+.situation-item p,
+.mission-task p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.9;
+    overflow-wrap: anywhere;
+}
+
+/* ===== Situations ===== */
+
+.situation-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+/* ===== Writing conditions ===== */
+
+.writing-conditions ol {
+    padding-left: 22px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.writing-conditions li {
+    padding-left: 4px;
+    margin-bottom: 6px;
+}
+
+.writing-conditions li:last-child {
+    margin-bottom: 0;
+}
+
+/* ===== Writing area ===== */
+
+.writing-section {
+    margin-top: 28px;
+}
+
+.input-label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.writing-input {
+    display: block;
+    width: 100%;
+    min-height: 220px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    outline: none;
+    background: #0F182A;
+    color: var(--text-primary);
+    font-size: 16px;
+    line-height: 1.9;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+}
+
+.writing-input::placeholder {
+    color: #7F8DA5;
+}
+
+.writing-input:focus {
+    border-color: var(--accent-blue);
+}
+
+.submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 48px;
+    margin-top: 18px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 999px;
+    background: var(--button-bg);
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.submit-button:hover {
+    background: var(--button-hover);
+}
+
+/* ===== Tablet ===== */
+
+@media (min-width: 600px) {
+    .home-screen {
+        padding: 28px 32px 48px;
+    }
+
+    .mission {
+        margin-top: 48px;
+    }
+
+    .mission-description {
+        font-size: 15px;
+    }
+
+    .mission-content {
+        margin-top: 44px;
+    }
+
+    .situation-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .situation-item:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .writing-input {
+        min-height: 280px;
+        padding: 20px;
+    }
+
+    .submit-button {
+        width: auto;
+        min-width: 160px;
+        margin-left: auto;
+    }
+}
+
+/* ===== Desktop ===== */
+
+@media (min-width: 900px) {
+    .home-screen {
+        min-height: 100vh;
+        margin: 24px auto;
+        padding: 32px 48px 56px;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+    }
+
+    .mission {
+        margin-top: 64px;
+    }
+
+    #writing-screen>.mission {
+        margin-top: 44px;
+    }
+
+    .mission-content {
+        margin-top: 48px;
+    }
+
+    .situation-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .situation-item:last-child {
+        grid-column: auto;
+    }
+
+    .mission-background,
+    .situation-item,
+    .mission-task,
+    .writing-conditions {
+        padding: 22px;
+    }
+
+    .writing-input {
+        min-height: 320px;
+    }
+}
+
+/* ===== Small mobile screens ===== */
+
+@media (max-width: 360px) {
+    .home-screen {
+        padding: 16px 12px 32px;
+    }
+
+    .mission {
+        margin-top: 28px;
+    }
+
+    .mission-title {
+        font-size: 19px;
+    }
+
+    .mission-description {
+        font-size: 13px;
+    }
+
+    .mission-background,
+    .situation-item,
+    .mission-task,
+    .writing-conditions {
+        padding: 14px;
+    }
+}
