@@ -1,6 +1,7 @@
 
 // テストモードではGeminiの添削APIを呼び出さない
-const TEST_MODE = true;
+const TEST_MODE = false;
+const API_TEST_MODE = true;
 
 // 選択中のミッションを保存する
 let missionData = null;
@@ -161,6 +162,15 @@ function returnToWriting() {
     showScreen("writing");
 }
 
+const frenchDate = new Intl.DateTimeFormat("fr-FR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+}).format(new Date());
+
+document.getElementById("writing-date").textContent =
+    frenchDate;
+
 // 添削結果を表示して結果画面に切り替える
 function displayResult(text, feedback) {
     setText("result-theme", missionData?.["テーマ"] || "");
@@ -206,13 +216,13 @@ async function submitWriting() {
 
     // 処理中の二重送信を防ぐ
     submitButton.disabled = true;
-    submitButton.textContent = TEST_MODE ? "テスト中..." : "添削中...";
+    submitButton.textContent = API_TEST_MODE ? "テスト中..." : "添削中...";
 
     try {
         let feedback;
 
         // テストモードと本番モードで処理を分ける
-        if (TEST_MODE) {
+        if (API_TEST_MODE) {
             feedback = getTestFeedback();
         } else {
             feedback = await requestCorrection(text);
@@ -233,21 +243,29 @@ async function submitWriting() {
 
 // HTMLの読み込みが終わってからイベントを登録する
 document.addEventListener("DOMContentLoaded", () => {
-    // 各ボタンにクリック時の処理を登録する
+    // ホーム画面から作文画面へ
     if (startButton) {
         startButton.addEventListener("click", startWriting);
     }
 
+    // ホーム画面へ戻る
     if (backButton) {
         backButton.addEventListener("click", goHome);
     }
 
+    // 結果画面から作文画面へ戻る
     if (resultBackButton) {
         resultBackButton.addEventListener("click", returnToWriting);
     }
 
-    if (submitButton) {
-        submitButton.addEventListener("click", submitWriting);
+    // フォーム送信時にページの再読み込みを防ぐ
+    const writingForm = document.getElementById("writing-form");
+
+    if (writingForm) {
+        writingForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            submitWriting();
+        });
     }
 
     // 最初のミッションを読み込む

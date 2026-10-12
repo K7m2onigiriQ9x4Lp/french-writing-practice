@@ -18,10 +18,10 @@
         <section id="home-screen">
             <header class="streak">
                 <div class="streak-info">
-                    <span class="orbit-icon">◎</span>
+                    <span class="orbit-icon"><i class="ti ti-sparkles"></i></span>
                     <span>連続 5日</span>
                 </div>
-                <span class="sparkle-icon">✧</span>
+
             </header>
 
             <section class="mission">
@@ -30,13 +30,11 @@
                     <span>今日のミッション</span>
                 </div>
 
-                <h1 class="mission-title" id="home-theme">
-                </h1>
+                <h1 class="mission-title" id="home-theme"></h1>
 
                 <div class="title-decoration"></div>
 
-                <p class="mission-description" id="home-description">
-                </p>
+                <p class="mission-description" id="home-description"></p>
 
                 <button class="start-button" id="start-button" type="button">
                     旅をはじめる <i class="ti ti-rocket"></i>
@@ -55,13 +53,12 @@
                     <span>今日のミッション</span>
                 </div>
 
-                <h1 class="mission-title" id="writing-theme">
-                </h1>
+                <h1 class="mission-title" id="writing-theme"></h1>
 
                 <div class="title-decoration"></div>
 
-                <p class="mission-description" id="writing-description">
-                </p>
+                <p class="mission-description" id="writing-description"></p>
+
             </section>
 
 
@@ -80,8 +77,6 @@
                         </ul>
                     </div>
 
-                    <div class="mission-divider"></div>
-
                     <div class="mission-section">
                         <h2 class="section-title">ミッション</h2>
 
@@ -96,19 +91,39 @@
 
                 </section>
 
+                <!-- 作成する -->
+                <div class="writing-heading">
+                    <i class="ti ti-writing"></i><span>作成する</span>
+                </div>
 
-                <!-- 便箋風の作文入力欄 -->
+                <!-- 作文入力欄 -->
                 <section class="writing-section">
-                    <textarea id="writing-input" class="writing-input" placeholder="Écrivez votre texte en français..."
-                        lang="fr" aria-label="フランス語の作文"></textarea>
+
+                    <div class="writing-window-header">
+                        <div class="window-controls" aria-hidden="true">
+                            <span class="window-dot close"></span>
+                            <span class="window-dot minimize"></span>
+                            <span class="window-dot maximize"></span>
+                        </div>
+
+                        <span class="window-title">Éditeur de texte</span>
+                    </div>
+
+                    <form class="writing-body" id="writing-form">
+                        <time class="writing-date" id="writing-date"></time>
+
+                        <textarea id="writing-input" class="writing-input" placeholder="Saisie..." lang="fr"
+                            aria-label="フランス語の作文"></textarea>
+
+                        <div class="writing-actions">
+                            <button class="submit-button" id="submit-button" type="submit" aria-label="送信">
+                                <i class="ti ti-send" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </form>
+
                 </section>
 
-                <!-- 添削ボタンは便箋の外 -->
-                <div class="submit-area">
-                    <button type="button" class="submit-button" id="submit-button">
-                        送る <span aria-hidden="true"><i class="ti ti-send"></i></span>
-                    </button>
-                </div>
 
             </div>
         </section>

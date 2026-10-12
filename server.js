@@ -6,7 +6,7 @@ const { google } = require("googleapis");
 const path = require("path");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json({ limit: "20kb" }));
 
@@ -33,11 +33,14 @@ app.get("/notes_test.css", (req, res) => {
 });
 //===============テスト用============================================
 
-// Google Sheets settings.
+// Google Sheets settings
+const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
+
 const auth = new google.auth.GoogleAuth({
-    keyFile: path.join(__dirname, "service-account.json"),
+    credentials: serviceAccount,
     scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"]
 });
+
 
 // Keep your existing values here.
 const SPREADSHEET_ID = "1IHA2Xk9PTQkixpgHnkYekYvrlDzjx2IQZgRFSFqOA2Q";
@@ -134,8 +137,7 @@ app.post("/api/correct", async (req, res) => {
     }
 });
 
-
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
     console.log("Registered routes:");
     console.log("POST /api/correct");
     console.log(`Server running at http://localhost:${PORT}`);
