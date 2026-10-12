@@ -23,18 +23,10 @@ app.get("/app.js", (req, res) => {
     res.sendFile(path.join(__dirname, "app.js"));
 });
 
-//===============テスト用============================================
-app.get("/notes_test.html", (req, res) => {
-    res.sendFile(path.join(__dirname, "notes_test.html"));
-});
-
-app.get("/notes_test.css", (req, res) => {
-    res.sendFile(path.join(__dirname, "notes_test.css"));
-});
-//===============テスト用============================================
-
 // Google Sheets settings
-const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
+const serviceAccount = process.env.GOOGLE_SERVICE_ACCOUNT_JSON
+    ? JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON)
+    : require("./service-account.json");
 
 const auth = new google.auth.GoogleAuth({
     credentials: serviceAccount,

@@ -1,7 +1,7 @@
 
 // テストモードではGeminiの添削APIを呼び出さない
 const TEST_MODE = false;
-const API_TEST_MODE = true;
+const API_TEST_MODE = false;
 
 // 選択中のミッションを保存する
 let missionData = null;
