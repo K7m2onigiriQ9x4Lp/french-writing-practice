@@ -91,10 +91,26 @@
 
                 </section>
 
-                <!-- 作成する -->
-                <div class="writing-heading">
-                    <i class="ti ti-writing"></i><span>作成する</span>
+
+                <!-- 作成する・言語選択 -->
+                <div class="writing-toolbar">
+                    <div class="writing-heading">
+                        <i class="ti ti-writing"></i><span>作成する</span>
+                    </div>
+
+                    <label class="language-select">
+
+                        <select id="writing-language" aria-label="作文の言語">
+                            <option value="fr">Français</option>
+                            <option value="en">English</option>
+                            <option value="ko">한국어</option>
+                            <option value="zh">中文</option>
+                        </select>
+
+                        <i class="ti ti-chevron-down" aria-hidden="true"></i>
+                    </label>
                 </div>
+
 
                 <!-- 作文入力欄 -->
                 <section class="writing-section">
@@ -152,6 +168,13 @@
                 <p id="result-original"></p>
 
                 <h2 class="section-title">添削・アドバイス</h2>
+                <p id="correction-feedback"></p>
+                <button type="button" class="copy-result-button" id="copy-result-button">
+                    <span aria-hidden="true"><i class="ti ti-copy"></i></span>
+                    作文・添削結果を一括コピー
+                </button>
+                <p id="copy-result-status" role="status" aria-live="polite"></p>
+
                 <p id="correction-feedback"></p>
             </section>
         </section>

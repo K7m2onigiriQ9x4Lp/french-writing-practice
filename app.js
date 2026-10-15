@@ -1,6 +1,6 @@
 
 // テストモードではGeminiの添削APIを呼び出さない
-const TEST_MODE = false;
+const TEST_MODE = true;
 const API_TEST_MODE = false;
 
 // 選択中のミッションを保存する
@@ -187,12 +187,17 @@ function getTestFeedback() {
 
 // サーバーに作文を送り、添削結果を取得する
 async function requestCorrection(text) {
+    const language = document.getElementById("writing-language").value;
+    console.log("選択した言語:", language);
     const response = await fetch("/api/correct", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({ text })
+        body: JSON.stringify({
+            text,
+            language: document.getElementById("writing-language").value
+        })
     });
 
     const data = await response.json();
@@ -203,6 +208,8 @@ async function requestCorrection(text) {
 
     return data.feedback || "添削結果を取得できませんでした。";
 }
+
+
 
 // 添削ボタンを押したときの処理
 async function submitWriting() {
@@ -216,7 +223,7 @@ async function submitWriting() {
 
     // 処理中の二重送信を防ぐ
     submitButton.disabled = true;
-    submitButton.textContent = API_TEST_MODE ? "テスト中..." : "添削中...";
+    submitButton.textContent = API_TEST_MODE ? "..." : "...";
 
     try {
         let feedback;
@@ -270,4 +277,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 最初のミッションを読み込む
     loadMission();
+});
+
+
+const copyResultButton = document.getElementById("copy-result-button");
+const resultOriginal = document.getElementById("result-original");
+const copyResultStatus = document.getElementById("copy-result-status");
+
+copyResultButton.addEventListener("click", async () => {
+    const original = resultOriginal.innerText.trim();
+    const feedback = correctionFeedback.innerText.trim();
+
+    if (!original && !feedback) {
+        copyResultStatus.textContent = "コピーする内容がありません。";
+        return;
+    }
+
+    const copyText = [
+        "あなたの作文",
+        original,
+        "",
+        "添削・アドバイス",
+        feedback
+    ].join("\n");
+
+    try {
+        await navigator.clipboard.writeText(copyText);
+        copyResultStatus.textContent = "作文と添削結果をコピーしました。";
+    } catch (error) {
+        copyResultStatus.textContent =
+            "コピーできませんでした。ブラウザの権限を確認してください。";
+    }
 });

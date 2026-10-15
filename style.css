@@ -468,6 +468,92 @@ a:focus-visible {
 }
 
 
+/* 作成する・言語選択の横並び */
+.writing-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+
+/* 作成する */
+.writing-toolbar .writing-heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    margin: 0;
+
+    color: var(--accent-color);
+    font-size: 15px;
+    letter-spacing: 0.04em;
+}
+
+.writing-heading i {
+    font-size: 20px;
+}
+
+/* 言語選択 */
+.language-select {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+
+    min-height: 38px;
+    padding: 0 12px;
+
+    color: var(--text-color);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 9px;
+
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    backdrop-filter: blur(var(--glass-blur));
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.language-select:hover,
+.language-select:focus-within {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+}
+
+.language-select select {
+    max-width: 130px;
+    padding: 0;
+
+    color: var(--text-color);
+    background: transparent;
+    border: none;
+    outline: none;
+
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.language-select select option {
+    color: var(--text-color);
+    background: var(--card-color);
+}
+
+.language-select>i {
+    color: var(--muted-color);
+    font-size: 14px;
+    pointer-events: none;
+}
+
+
+
 /* =========================
    作文入力欄
 ========================= */
@@ -629,6 +715,43 @@ a:focus-visible {
     overflow-wrap: anywhere;
     white-space: pre-wrap;
 }
+
+
+.copy-result-button {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px 20px;
+    border: 1px solid var(--accent-border);
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent-color);
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.copy-result-button:hover {
+    background: rgba(229, 201, 106, 0.16);
+}
+
+.copy-result-button:active {
+    transform: scale(0.98);
+}
+
+.copy-result-button:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 3px;
+}
+
+#copy-result-status {
+    margin-top: 8px;
+    color: var(--muted-color);
+    font-size: 13px;
+    text-align: center;
+}
+
 
 /* =========================
    PC用
